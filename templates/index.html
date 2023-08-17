@@ -311,27 +311,33 @@
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center mb-3">
+                            <div class="fw-bolder">Envio do formulário com sucesso!</div>
+                        </div>
+                    </div>
 
-                    <form action="" id="contactForm" data-sb-form-api-token="API_TOKEN">
+
+                    <form action="/submit" method="post" id="contactForm" data-sb-form-api-token="API_TOKEN">
                         <!-- Name input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="name" type="text" placeholder="Enter your name..."
-                                data-sb-validations="required" />
+                            <input class="form-control" name="nome" id="name" type="text"
+                                placeholder="Enter your name..." data-sb-validations="required" />
                             <label for="name">Nome:</label>
                             <div class="invalid-feedback" data-sb-feedback="name:required">É necessario o nome.</div>
                         </div>
                         <!-- Email address input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="email" type="email" placeholder="name@example.com"
-                                data-sb-validations="required,email" />
+                            <input class="form-control" name="email" id="email" type="email"
+                                placeholder="name@example.com" data-sb-validations="required,email" />
                             <label for="email">Endereço de Email:</label>
                             <div class="invalid-feedback" data-sb-feedback="email:required">É necessario um email.</div>
                             <div class="invalid-feedback" data-sb-feedback="email:email">Esse Email não é válido.</div>
                         </div>
                         <!-- Phone number input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890"
-                                data-sb-validations="required" />
+                            <input class="form-control" name="telefone" id="phone" type="tel"
+                                placeholder="(123) 456-7890" data-sb-validations="required" />
                             <label for="phone">Telefone:</label>
                             <div class="invalid-feedback" data-sb-feedback="phone:required">É necessário um número de
                                 telefone.
@@ -339,28 +345,23 @@
                         </div>
                         <!-- Message input-->
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" id="message" type="text"
+                            <textarea name="msg" class="form-control" id="message" type="text"
                                 placeholder="Enter your message here..." style="height: 10rem"
                                 data-sb-validations="required"></textarea>
                             <label for="message">Mensagem</label>
                             <div class="invalid-feedback" data-sb-feedback="message:required">É necessário uma mensagem.
                             </div>
                         </div>
-
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Envio do formulário com sucesso!</div>
-                            </div>
-                        </div>
-                        <!-- Submit error message-->
-                        <!---->
-                        <div class="d-none" id="submitErrorMessage">
-                            <div class="text-center text-danger mb-3">Erro ao enviar as informações!</div>
-                        </div>
                         <!-- Submit Button-->
-                        <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton"
+                        <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton"
                                 type="submit">Submit</button></div>
+
                     </form>
+                    {% if success_message %}
+                    <div class="text-center mb-3">
+                        <div class="fw-bolder">{{ success_message }}</div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
