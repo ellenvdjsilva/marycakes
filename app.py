@@ -14,7 +14,7 @@ def submit():
         telefone = request.form.get('telefone')
         msg = request.form.get('msg')
         
-        # Faça algo com os dados, se necessário
+       
         
         success_message = "Envio do formulário com sucesso!"
         return render_template('index.html', success_message=success_message)
